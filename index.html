@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            overflow: hidden; /* prevent scroll during animations */
+        }
+        .recipe-card {
+            max-width: 600px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: auto;
+            opacity: 0; /* hidden by default */
+            transform: translateY(50px); /* initial position */
+            transition: all 0.5s ease-in-out;
+        }
+        .recipe-card.visible {
+            opacity: 1;
+            transform: translateY(0); /* move back to normal position */
+        }
+        .recipe-header {
+            text-align: center;
+        }
+        .recipe-header h1 {
+            margin: 0;
+            color: #333;
+            transition: color 0.3s ease-in-out;
+        }
+        .recipe-header p {
+            margin: 5px 0;
+            color: #777;
+        }
+        .recipe-header:hover h1 {
+            color: #FF6347; /* change color on hover */
+        }
+        .ingredients, .instructions {
+            margin: 20px 0;
+        }
+        .ingredients h2, .instructions h2 {
+            color: #444;
+            border-bottom: 2px solid #f4f4f4;
+            padding-bottom: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            background-color: #f9f9f9;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+        ul li:hover {
+            background-color: #ffe6e6; /* light hover effect */
+        }
+        .instructions ol {
+            padding-left: 20px;
+        }
+        .instructions ol li {
+            margin: 10px 0;
+            transition: transform 0.3s ease;
+        }
+        .instructions ol li:hover {
+            transform: scale(1.05);
+        }
+        /* Simple animation for the header and recipe card */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="recipe-card" id="recipeCard">
+    <div class="recipe-header">
+        <h1>Chocolate Chip Cookies</h1>
+        <p>Prep Time: 15 mins | Cook Time: 10 mins | Servings: 24</p>
+    </div>
+
+    <div class="ingredients">
+        <h2>Ingredients</h2>
+        <ul>
+            <li>1 cup unsalted butter, softened</li>
+            <li>1 cup white sugar</li>
+            <li>1 cup packed brown sugar</li>
+            <li>2 eggs</li>
+            <li>2 tsp vanilla extract</li>
+            <li>3 cups all-purpose flour</li>
+            <li>1 tsp baking soda</li>
+            <li>2 tsp hot water</li>
+            <li>1/2 tsp salt</li>
+            <li>2 cups semisweet chocolate chips</li>
+        </ul>
+    </div>
+
+    <div class="instructions">
+        <h2>Instructions</h2>
+        <ol>
+            <li>Preheat oven to 350°F (175°C).</li>
+            <li>Cream together the butter, white sugar, and brown sugar until smooth.</li>
+            <li>Beat in the eggs one at a time, then stir in the vanilla.</li>
+            <li>Dissolve baking soda in hot water, then add to the batter along with salt.</li>
+            <li>Stir in flour and chocolate chips.</li>
+            <li>Drop by large spoonfuls onto ungreased pans.</li>
+            <li>Bake for about 10 minutes or until edges are nicely browned.</li>
+        </ol>
+    </div>
+</div>
+
+<script>
+    // Animate the recipe card on page load
+    window.addEventListener('load', function() {
+        const recipeCard = document.getElementById('recipeCard');
+        setTimeout(() => {
+            recipeCard.classList.add('visible');
+        }, 300); // delay to make it appear smoothly
+    });
+</script>
+
+</body>
+</html>
